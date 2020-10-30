@@ -1,14 +1,108 @@
-$headerColor: rgb(20, 50, 120);
-$backgroundColor: rgb(200, 70, 150);
+// Variables
+$bodyBackground: linear-gradient(180deg, rgb(0, 117, 172),rgb(0, 185, 169));
+$cardBackground: none;
+$textColor: rgb(65, 0, 78);
+$buttonBackground: rgba(0, 185, 169, 0.7);
+$buttonContainerBackground: rgb(0, 185, 169);
+$headerFontSize: 3rem;
+$bodyFontSize: 2rem;
+
+// Mixins
+@mixin backgroundSetting {
+    width: 100%;
+    height: 100vh;
+}
 
 @mixin displayFlex {
     display: flex;
-    justify-content: center;
     align-items: center;
 }
 
-h1 {
+@mixin buttonStyle {
+    border: 1px solid white;
+    // border: none;
+    outline: none;
+    background: $buttonBackground;
+    color: $textColor;
+    cursor: pointer;
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+@mixin buttonContainerStyle {
+    margin: 2rem;
+    transition: 0.3s ease;
+    transform: translate(-1rem, 1rem);
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.3);
+}
+
+// Element styling
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    @include backgroundSetting();
+    background: $bodyBackground;
+    font-size: $bodyFontSize;
+    text-align: center;
+}
+
+section {
     @include displayFlex();
-    color:  $headerColor;
-    background: $backgroundColor;
+    flex-direction: column;
+    color: $textColor;
+    width: 100%;
+    height: 100vh;
+    padding: 1rem;
+}
+
+.title-container {
+    margin: 1rem;
+}
+
+h1 {
+    font-size: $headerFontSize;
+    font-weight: 800;
+}
+
+.card-container {
+    @include displayFlex();
+    flex-direction: column;
+    justify-content: space-between;
+    width: 50%;
+    height: 60vh;
+    background: $cardBackground;
+}
+
+.weather-image-container {
+    width: 40%;
+    height: 40%;
+    border: 1px solid black;
+}
+
+.data {
+    padding: 1rem;
+}
+
+.button-container {
+    @include buttonContainerStyle();
+    background: $buttonContainerBackground;
+}
+
+button {
+    @include buttonStyle();
+    transform: translate(0.5rem, -0.5rem);
+}
+
+.button-container:hover {
+    transform: translate(-0.5rem, 0.5rem);
+}
+
+.button-container:hover > button {
+    transform: translate(-0.5rem, 0.5rem);
 }
