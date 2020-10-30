@@ -1,0 +1,14 @@
+$headerColor: rgb(20, 50, 120);
+$backgroundColor: rgb(200, 70, 150);
+
+@mixin displayFlex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    @include displayFlex();
+    color:  $headerColor;
+    background: $backgroundColor;
+}
