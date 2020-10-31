@@ -79,14 +79,14 @@ h1 {
     background: $cardBackground;
 }
 
-.weather-image-container {
-    width: 40%;
-    height: 40%;
-    border: 1px solid black;
-}
-
 .data {
     padding: 1rem;
+}
+
+.weather-data-container p {
+    font-size: 0;
+    word-spacing: 20px;
+    background: red;
 }
 
 .button-container {
