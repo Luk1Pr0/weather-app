@@ -13,7 +13,10 @@ function fetchWeather(lat, lon) {
         .then(resp => resp.json())
         // Send the data to the append function
         .then(data => appendData(data))
-    .catch(err => console.log("Error", err));
+    .catch((err) => {
+        console.log("Error", err);
+        alert("Sorry, please try again in a few minutes");
+    });
 }
 
 // Append the weather data into the DOM
