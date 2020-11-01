@@ -2,6 +2,7 @@
 const locationBtn = document.getElementById("get-location-btn");
 const weatherImage = document.querySelector(".weather-image-container");
 const weatherContents = document.querySelectorAll(".weather-data");
+const weatherDetails = document.querySelectorAll(".weather-details")
 
 // Proxy needed as unable to request data from weather API from localhost
 const proxy = "https://cors-anywhere.herokuapp.com/";
@@ -29,7 +30,9 @@ function appendData(data) {
     // Append data to HTML DOM
     weatherContents[0].textContent = `${country} has ${description}`;
     weatherContents[1].textContent = `It is ${tempResult}`;
-    weatherContents[2].textContent = `The temperature outside feels like ${feels_like}. The humidity is ${humidity}% and the pressure is ${pressure} hPa`;
+    weatherDetails[0].textContent = `The temperature outside feels like ${feels_like}`
+    weatherDetails[1].textContent = `The humidity is ${humidity} %, `;
+    weatherDetails[2].textContent = `and the pressure is ${pressure} hPa`;
 }
 
 // Show and store coordinates in variables
@@ -45,10 +48,11 @@ function currentCoords(pos) {
     }
 }
 
-function getCurrentLocation() {
+function displayWeather() {
     // Put the current location in a variable and push it to the getCoords function
     const position = navigator.geolocation.getCurrentPosition(currentCoords);
 }
 
 // Event listeners
-locationBtn.addEventListener("click", getCurrentLocation);
+locationBtn.addEventListener("click", displayWeather);
+// window.addEventListener("load", displayWeather);

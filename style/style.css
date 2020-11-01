@@ -86,6 +86,10 @@ h1 {
   content: "\00B0 C";
 }
 
+.temp::after {
+  content: "\00B0 C";
+}
+
 .button-container {
   margin: 2rem;
   -webkit-transition: 0.3s ease;
@@ -120,5 +124,17 @@ button {
 .button-container:hover > button {
   -webkit-transform: translate(-0.5rem, 0.5rem);
           transform: translate(-0.5rem, 0.5rem);
+}
+
+@media screen and (max-width: 1000px) {
+  body {
+    font-size: 1rem;
+  }
+  .temperature {
+    font-size: 2rem;
+  }
+  p {
+    padding: 1rem;
+  }
 }
 /*# sourceMappingURL=style.css.map */
