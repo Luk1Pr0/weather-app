@@ -1,7 +1,7 @@
 // DOM selectors
 const locationBtn = document.getElementById("get-location-btn");
 const weatherImage = document.querySelector(".weather-image-container");
-const weatherContents = document.querySelectorAll("span");
+const weatherContents = document.querySelectorAll(".weather-data");
 
 // Proxy needed as unable to request data from weather API from localhost
 const proxy = "https://cors-anywhere.herokuapp.com/";
@@ -9,7 +9,6 @@ const apiKey = "bcf5adc4445cab1a41fc173b8717108d";
 
 function fetchWeather(lat, lon) {
     const apiUrl = `${proxy}api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
-    console.log(apiUrl);
     fetch(apiUrl)
         .then(resp => resp.json())
         // Send the data to the append function
@@ -19,17 +18,16 @@ function fetchWeather(lat, lon) {
 
 // Append the weather data into the DOM
 function appendData(data) {
-    console.log(data);
     const { feels_like, humidity, pressure, temp } = data.main;
     const { description } = data.weather[0];
     const { country } = data.sys;
-    weatherContents[0].textContent = description;
     // Round the temperature to 1 decimal point
-    weatherContents[1].textContent = Math.round(temp * 10) / 10;
-    weatherContents[3].textContent = country;
+    const tempResult = Math.round(temp * 10) / 10;
+    // Append data to HTML DOM
+    weatherContents[0].textContent = `${country} has ${description}`;
+    weatherContents[1].textContent = `It is ${tempResult}`;
+    weatherContents[2].textContent = `The temperature outside feels like ${feels_like}. The humidity is ${humidity}% and the pressure is ${pressure} hPa`;
 }
-console.log(weatherImage);
-console.log(weatherContents);
 
 // Show and store coordinates in variables
 function currentCoords(pos) {

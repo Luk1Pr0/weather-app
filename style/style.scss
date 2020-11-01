@@ -6,6 +6,7 @@ $buttonBackground: rgba(0, 185, 169, 0.7);
 $buttonContainerBackground: rgb(0, 185, 169);
 $headerFontSize: 3rem;
 $bodyFontSize: 2rem;
+$tempFontSize: 2.4rem;
 
 // Mixins
 @mixin backgroundSetting {
@@ -73,20 +74,30 @@ h1 {
 .card-container {
     @include displayFlex();
     flex-direction: column;
-    justify-content: space-between;
+    align-items: center;
     width: 50%;
     height: 60vh;
     background: $cardBackground;
+}
+
+.weather-data-container {
+    height: 100%;
+    @include displayFlex();
+    flex-direction: column;
+    justify-content: center;
 }
 
 .data {
     padding: 1rem;
 }
 
-.weather-data-container p {
-    font-size: 0;
-    word-spacing: 20px;
-    background: red;
+.temperature {
+    font-size: $tempFontSize;
+}
+
+// Add the degree sign after the temperature
+.temperature::after {
+    content: "\00B0 C";
 }
 
 .button-container {
